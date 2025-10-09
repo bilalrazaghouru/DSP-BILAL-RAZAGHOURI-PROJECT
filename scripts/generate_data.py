@@ -1,17 +1,13 @@
-import pandas as pd, numpy as np, os, uuid
+import pandas as pd, os, numpy as np
+from sklearn.utils import shuffle
 
 os.makedirs("raw-data", exist_ok=True)
 
-def generate_file():
-    data = {
-        "user_id": np.arange(1, 11),
-        "experience": np.random.randint(0, 20, 10),
-        "skills_score": np.random.rand(10) * 100
-    }
-    df = pd.DataFrame(data)
-    filename = f"raw-data/data_{uuid.uuid4().hex[:6]}.csv"
-    df.to_csv(filename, index=False)
-    print(f"Generated {filename}")
+df = pd.read_csv("data/main.csv")
+df = shuffle(df)
 
-if __name__ == "__main__":
-    generate_file()
+chunks = np.array_split(df, 10)
+for i, c in enumerate(chunks):
+    path = f"raw-data/data_part_{i}.csv"
+    c.to_csv(path, index=False)
+    print(f"✅ Created {path}")

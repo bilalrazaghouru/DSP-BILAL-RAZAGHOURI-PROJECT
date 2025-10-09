@@ -1,0 +1,10 @@
+{
+    "filename": "error_type_1.csv",
+    "predictions": [
+        "Not Recommended",
+        "Not Recommended",
+        "Recommended",
+        "Recommended",
+        "Recommended"
+    ]
+}
