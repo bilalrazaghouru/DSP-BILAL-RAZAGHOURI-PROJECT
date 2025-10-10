@@ -1,7 +1,40 @@
-venv/
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.env
+*.egg-info/
+.venv/
+venv/
+ENV/
+
+# Streamlit
+.streamlit/
+
+# Airflow (local)
+airflow_home/
+logs/
+plugins/__pycache__/
+dags/__pycache__/
+
+# Data & artifacts
+raw-data/
+good-data/
+good_data/
+bad-data/
+bad_data/
+db/
+responses/
+*.db
+*.sqlite
+
+# OS/editor
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Secrets
+.env
+.env.*
+pgdata/

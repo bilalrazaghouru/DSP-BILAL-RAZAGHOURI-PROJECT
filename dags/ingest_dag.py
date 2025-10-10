@@ -1,35 +1,40 @@
 from airflow import DAG
-from airflow.providers.standard.operators.python import PythonOperator
-from datetime import datetime
-import os, shutil, random
+from airflow.operators.python import PythonOperator
+from datetime import datetime, timedelta
+import pandas as pd
+import os
 
-RAW = "raw-data"
-GOOD = "good-data"
+def ingest_data():
+    """Simulate ingestion of raw data and save to /tmp folder"""
+    data = {
+        "name": ["Ali", "Sara", "Bilal", "Aisha"],
+        "age": [25, 28, 22, 30],
+        "city": ["Lahore", "Karachi", "Islamabad", "Paris"]
+    }
+    df = pd.DataFrame(data)
+    os.makedirs("/tmp/airflow_data", exist_ok=True)
+    df.to_csv("/tmp/airflow_data/raw_data.csv", index=False)
+    print("✅ Data ingested successfully!")
 
-def read_data():
-    files = os.listdir(RAW)
-    return os.path.join(RAW, random.choice(files)) if files else None
 
-def save_file(ti):
-    file_path = ti.xcom_pull(task_ids="read-data")
-    if file_path:
-        shutil.move(file_path, os.path.join(GOOD, os.path.basename(file_path)))
-        print(f"Moved {file_path} → {GOOD}")
+default_args = {
+    "owner": "airflow",
+    "retries": 1,
+    "retry_delay": timedelta(minutes=2),
+}
 
 with DAG(
     dag_id="ingest_dag",
-    start_date=datetime(2025, 1, 1),
-    schedule="@daily",
+    default_args=default_args,
+    start_date=datetime(2024, 10, 1),
+    schedule_interval="@daily",
     catchup=False,
+    tags=["data_ingestion"]
 ) as dag:
-    t1 = PythonOperator(
-        task_id="read-data",
-        python_callable=read_data
+
+    ingest_task = PythonOperator(
+        task_id="ingest_data_task",
+        python_callable=ingest_data,
     )
 
-    t2 = PythonOperator(
-        task_id="save-file",
-        python_callable=save_file
-    )
-
-    t1 >> t2
+    ingest_task

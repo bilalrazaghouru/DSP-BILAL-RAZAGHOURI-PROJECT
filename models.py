@@ -1,10 +1,14 @@
-from sqlalchemy import Column, Integer, String
+# models.py
+from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.sql import func
+from sqlalchemy.dialects.postgresql import JSONB
 from database import Base
 
-# ✅ Define the "students" table structure
-class Student(Base):
-    __tablename__ = "students"
-
+class Prediction(Base):
+    __tablename__ = "predictions"
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False)
-    course = Column(String, nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), index=True)
+    source = Column(String, nullable=False)              # "webapp" | "scheduled predictions"
+    model_version = Column(String, nullable=False, default="v0")
+    features = Column(JSONB, nullable=False)             # full input row
+    prediction = Column(String, nullable=False)          # your model output (stringify if needed)

@@ -1,44 +1,42 @@
 from airflow import DAG
-from airflow.providers.standard.operators.python import PythonOperator, BranchPythonOperator
-from datetime import datetime
-import os, requests
+from airflow.operators.python import PythonOperator, BranchPythonOperator
+from datetime import datetime, timedelta
+import pandas as pd
+import random
+import os
 
-GOOD = "good-data"
+def predict():
+    """Simulate predictions from ingested data"""
+    input_path = "/tmp/airflow_data/raw_data.csv"
+    output_path = "/tmp/airflow_data/predictions.csv"
 
-def check_for_new_data():
-    files = os.listdir(GOOD)
-    return "make_predictions" if files else "skip_task"
+    if not os.path.exists(input_path):
+        raise FileNotFoundError("❌ No input data found. Run ingest_dag first!")
 
-def make_predictions():
-    files = os.listdir(GOOD)
-    for f in files:
-        with open(os.path.join(GOOD, f), "rb") as fp:
-            response = requests.post("http://127.0.0.1:8000/predict", files={"file": fp})
-            print(response.json())
+    df = pd.read_csv(input_path)
+    df["prediction"] = [random.choice(["Yes", "No"]) for _ in range(len(df))]
+    df.to_csv(output_path, index=False)
+    print("✅ Predictions generated successfully!")
 
-def skip_task():
-    print("No new files. Skipping run.")
+
+default_args = {
+    "owner": "airflow",
+    "retries": 1,
+    "retry_delay": timedelta(minutes=2),
+}
 
 with DAG(
     dag_id="prediction_dag",
-    start_date=datetime(2025, 1, 1),
-    schedule="@daily",
+    default_args=default_args,
+    start_date=datetime(2024, 10, 1),
+    schedule_interval="@daily",
     catchup=False,
+    tags=["prediction"]
 ) as dag:
-    check_task = BranchPythonOperator(
-        task_id="check_for_new_data",
-        python_callable=check_for_new_data
+
+    prediction_task = PythonOperator(
+        task_id="prediction_task",
+        python_callable=predict,
     )
 
-    pred_task = PythonOperator(
-        task_id="make_predictions",
-        python_callable=make_predictions
-    )
-
-    skip = PythonOperator(
-        task_id="skip_task",
-        python_callable=skip_task
-    )
-
-    check_task >> [pred_task, skip]
-
+    prediction_task

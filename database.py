@@ -1,15 +1,10 @@
+import os
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-# ✅ PostgreSQL connection URL
-DATABASE_URL = "postgresql+psycopg2://dsp_user1:postgres123@localhost:5432/dsp_project1"
+# Only take from ENV; default is dsp:dsp on localhost
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+psycopg2://dsp:dsp@localhost:5432/dsp")
 
-# ✅ Create the SQLAlchemy engine
-engine = create_engine(DATABASE_URL)
-
-# ✅ Create a SessionLocal class for DB sessions
+engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# ✅ Base class for model classes
 Base = declarative_base()
