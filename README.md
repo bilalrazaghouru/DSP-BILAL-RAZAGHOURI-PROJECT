@@ -149,7 +149,3 @@ Database table view
 This project is for academic and learning purposes under the guidance of the DSP course.
 
 
-
----
-
-Would you like me to create this README as a **ready-to-download file (`README.md`)** so you can directly upload it to GitHub?
