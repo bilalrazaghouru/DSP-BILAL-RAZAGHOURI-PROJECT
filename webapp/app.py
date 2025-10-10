@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 from datetime import date
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = "http://127.0.0.1:9000"
 
 st.set_page_config(page_title="DSP Prediction Dashboard", layout="wide")
 page = st.sidebar.radio("Select Page", ["Make Predictions", "Past Predictions"])
