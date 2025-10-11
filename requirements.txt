@@ -1,7 +1,0 @@
-fastapi
-uvicorn
-streamlit
-pandas
-requests
-scikit-learn
-apache-airflow
