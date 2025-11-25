@@ -1,8 +1,7 @@
 ﻿# **DSP Project AI Job Recommendation System**
- @"
 # AI Job Recommendation System - MLOps Project
 **Course:** Data Science in Production  
-**Repository:** https://github.com/bilalrazaghouru/DSP-BILAL-RAZAGHOURI-PROJE  
+**Repository:** https://github.com/bilalrazaghouru/DSP-BILAL-RAZAGHOURI-PROJECT  
 **Team Size:** 4 members
 
 ## 🎯 Project Overview
@@ -21,7 +20,7 @@ Production-ready ML system that recommends jobs to candidates with automated dat
 **Folders:** \`01-database-setup/\`, \`02-ml-model/\`, \`03-api-service/\`
 - PostgreSQL database design & setup
 
-  ### Member 2: Vamshi Krishna
+  ### Member 2: Vinod
 - ML model training (Random Forest, 97% accuracy)
 - 
 ### Member 3: Fahad Rehman
@@ -51,26 +50,7 @@ Production-ready ML system that recommends jobs to candidates with automated dat
 
 ## 🏗️ System Architecture
 
-\`\`\`
-┌─────────────┐
-│  Streamlit  │ ← User Interface
-└──────┬──────┘
-       │
-┌──────▼──────┐
-│   FastAPI   │ ← Model Service
-└──────┬──────┘
-       │
-┌──────▼──────┐
-│ PostgreSQL  │ ← Database (100K+ records)
-└──────┬──────┘
-       │
-  ┌────┴────┬────────┐
-  │         │        │
-┌─▼──┐  ┌──▼──┐  ┌──▼──┐
-│Air-│  │Data │  │Gra- │
-│flow│  │Val  │  │fana │
-└────┘  └─────┘  └─────┘
-\`\`\`
+<img width="2675" height="946" alt="project-architecture" src="https://github.com/user-attachments/assets/f86ed807-316d-405c-a886-64c1c7d88f08" />
 
 ## 🚀 Quick Start
 
@@ -178,5 +158,6 @@ DSP-BILAL-RAZAGHOURI-PROJECT/
 **Status:** Production Ready ✅  
 **Last Updated:** November 2025
 "@ | Out-File -FilePath README.md -Encoding utf8
+
 
 
