@@ -1,4 +1,4 @@
-﻿# DSP Project - Member Contributions
+﻿# **DSP Project AI Job Recommendation System**
  @"
 # AI Job Recommendation System - MLOps Project
 **Course:** Data Science in Production  
@@ -83,8 +83,8 @@ Production-ready ML system that recommends jobs to candidates with automated dat
 
 \`\`\`bash
 # Clone repository
-git clone https://github.com/bilalrazaghouru/DSP-BILAL-RAZAGHOURI-PROJE.git
-cd DSP-BILAL-RAZAGHOURI-PROJE
+git clone https://github.com/bilalrazaghouru/DSP-BILAL-RAZAGHOURI-PROJECT.git
+cd DSP-BILAL-RAZAGHOURI-PROJECT
 
 # Setup database (Member 1)
 cd 01-database-setup
@@ -120,14 +120,14 @@ docker compose up -d
 ## 📁 Project Structure
 
 \`\`\`
-DSP-BILAL-RAZAGHOURI-PROJE/
+DSP-BILAL-RAZAGHOURI-PROJECT/
 ├── 01-database-setup/          # Bilal - Database schema
-├── 02-ml-model/                # Bilal - ML training
-├── 03-api-service/             # Bilal - FastAPI
-├── 04-streamlit-webapp/        # Member 2 - Web UI
-├── 05-airflow-dags/            # Member 3 - Pipelines
-├── 06-data-validation/         # Member 3 - Validation
-├── 07-grafana-dashboards/      # Member 4 - Monitoring
+├── 02-ml-model/                # Vinod - ML training
+├── 03-api-service/             # Fahad - FastAPI
+├── 04-streamlit-webapp/        # Ahmad - Web UI
+├── 05-airflow-dags/            # Bilal - Pipelines
+├── 06-data-validation/         # Bilal - Validation
+├── 07-grafana-dashboards/      # Bilal - Monitoring
 ├── 08-documentation/           # All members
 │   ├── SETUP_GUIDE.md
 │   ├── DEMO_SCRIPT.md
@@ -172,10 +172,11 @@ DSP-BILAL-RAZAGHOURI-PROJE/
 
 ## 📧 Contact
 **Project Lead:** Bilal Razaghouri  
-**Repository:** https://github.com/bilalrazaghouru/DSP-BILAL-RAZAGHOURI-PROJE
+**Repository:** https://github.com/bilalrazaghouru/DSP-BILAL-RAZAGHOURI-PROJECT
 
 ---
 **Status:** Production Ready ✅  
 **Last Updated:** November 2025
 "@ | Out-File -FilePath README.md -Encoding utf8
+
 
