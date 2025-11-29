@@ -50,27 +50,8 @@ Production-ready ML system that recommends jobs to candidates with automated dat
 - SQL query optimization
 
 ## 🏗️ System Architecture
+<img width="2675" height="946" alt="project-architecture" src="https://github.com/user-attachments/assets/5cce4cc3-321b-4ab5-9d59-6ecd8d5a0be5" />
 
-\`\`\`
-┌─────────────┐
-│  Streamlit  │ ← User Interface
-└──────┬──────┘
-       │
-┌──────▼──────┐
-│   FastAPI   │ ← Model Service
-└──────┬──────┘
-       │
-┌──────▼──────┐
-│ PostgreSQL  │ ← Database (100K+ records)
-└──────┬──────┘
-       │
-  ┌────┴────┬────────┐
-  │         │        │
-┌─▼──┐  ┌──▼──┐  ┌──▼──┐
-│Air-│  │Data │  │Gra- │
-│flow│  │Val  │  │fana │
-└────┘  └─────┘  └─────┘
-\`\`\`
 
 ## 🚀 Quick Start
 
