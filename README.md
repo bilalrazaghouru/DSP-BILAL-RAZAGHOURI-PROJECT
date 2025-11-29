@@ -21,7 +21,7 @@ Production-ready ML system that recommends jobs to candidates with automated dat
 **Folders:** \`01-database-setup/\`, \`02-ml-model/\`, \`03-api-service/\`
 - PostgreSQL database design & setup
 
-  ### Member 2: Vamshi Krishna
+  ### Member 2:Vinod 
 - ML model training (Random Forest, 97% accuracy)
 - 
 ### Member 3: Fahad Rehman
