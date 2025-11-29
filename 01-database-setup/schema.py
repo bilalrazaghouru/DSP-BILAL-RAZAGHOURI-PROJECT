@@ -5,7 +5,7 @@ from datetime import datetime
 
 Base = declarative_base()
 
-# --- Table 1: Predictions ---
+# Table 1: Predictions
 class Prediction(Base):
     __tablename__ = 'predictions'
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -18,7 +18,7 @@ class Prediction(Base):
     source = Column(String(20))       # 'webapp' or 'scheduled'
     timestamp = Column(DateTime, default=datetime.utcnow)
 
-# --- Table 2: Data Quality ---
+# Table 2: Data Quality
 class DataQuality(Base):
     __tablename__ = 'data_quality'
     id = Column(Integer, primary_key=True, autoincrement=True)
@@ -30,7 +30,7 @@ class DataQuality(Base):
     criticality = Column(String(20)) # 'low', 'medium', 'high'
     timestamp = Column(DateTime, default=datetime.utcnow)
 
-# --- Database connection ---
+#  Database connection
 # NOTE: @ symbol in password must be URL-encoded as %40
 DATABASE_URL = "postgresql://job_user:JobUser%40123@localhost:5432/job_recommendation"
 

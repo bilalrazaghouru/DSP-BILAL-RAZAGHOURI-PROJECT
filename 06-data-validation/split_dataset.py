@@ -35,12 +35,3 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     split_dataset(args.dataset, args.output, args.num_files)
-```
-
-**Usage:**
-```bash
-python src/utils/split_dataset.py \
-    --dataset data/job_recommendations.csv \
-    --output data/raw-data \
-    --num-files 50
-```

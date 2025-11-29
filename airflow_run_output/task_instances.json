@@ -1,0 +1,195 @@
+﻿{
+    "task_instances":  [
+                           {
+                               "dag_id":  "data_ingestion_with_validation",
+                               "dag_run_id":  "manual__2025-11-26T14:17:12.739583",
+                               "duration":  0.648603,
+                               "end_date":  "2025-11-26T14:17:17.919247+00:00",
+                               "execution_date":  "2025-11-26T14:17:13.128795+00:00",
+                               "executor_config":  "{}",
+                               "hostname":  "614674a3a0f0",
+                               "map_index":  -1,
+                               "max_tries":  1,
+                               "note":  null,
+                               "operator":  "PythonOperator",
+                               "pid":  269,
+                               "pool":  "default_pool",
+                               "pool_slots":  1,
+                               "priority_weight":  5,
+                               "queue":  "default",
+                               "queued_when":  "2025-11-26T14:17:13.440971+00:00",
+                               "rendered_fields":  {
+                                                       "op_args":  [
+
+                                                                   ],
+                                                       "op_kwargs":  {
+
+                                                                     },
+                                                       "templates_dict":  null
+                                                   },
+                               "rendered_map_index":  null,
+                               "sla_miss":  null,
+                               "start_date":  "2025-11-26T14:17:17.270644+00:00",
+                               "state":  "success",
+                               "task_display_name":  "read_data",
+                               "task_id":  "read_data",
+                               "trigger":  null,
+                               "triggerer_job":  null,
+                               "try_number":  1,
+                               "unixname":  "airflow"
+                           },
+                           {
+                               "dag_id":  "data_ingestion_with_validation",
+                               "dag_run_id":  "manual__2025-11-26T14:17:12.739583",
+                               "duration":  0.466336,
+                               "end_date":  "2025-11-26T14:17:22.631864+00:00",
+                               "execution_date":  "2025-11-26T14:17:13.128795+00:00",
+                               "executor_config":  "{}",
+                               "hostname":  "614674a3a0f0",
+                               "map_index":  -1,
+                               "max_tries":  1,
+                               "note":  null,
+                               "operator":  "PythonOperator",
+                               "pid":  272,
+                               "pool":  "default_pool",
+                               "pool_slots":  1,
+                               "priority_weight":  4,
+                               "queue":  "default",
+                               "queued_when":  "2025-11-26T14:17:18.651431+00:00",
+                               "rendered_fields":  {
+                                                       "op_args":  [
+
+                                                                   ],
+                                                       "op_kwargs":  {
+
+                                                                     },
+                                                       "templates_dict":  null
+                                                   },
+                               "rendered_map_index":  null,
+                               "sla_miss":  null,
+                               "start_date":  "2025-11-26T14:17:22.165528+00:00",
+                               "state":  "success",
+                               "task_display_name":  "validate_data",
+                               "task_id":  "validate_data",
+                               "trigger":  null,
+                               "triggerer_job":  null,
+                               "try_number":  1,
+                               "unixname":  "airflow"
+                           },
+                           {
+                               "dag_id":  "data_ingestion_with_validation",
+                               "dag_run_id":  "manual__2025-11-26T14:17:12.739583",
+                               "duration":  0.632715,
+                               "end_date":  "2025-11-26T14:17:28.592268+00:00",
+                               "execution_date":  "2025-11-26T14:17:13.128795+00:00",
+                               "executor_config":  "{}",
+                               "hostname":  "614674a3a0f0",
+                               "map_index":  -1,
+                               "max_tries":  1,
+                               "note":  null,
+                               "operator":  "PythonOperator",
+                               "pid":  279,
+                               "pool":  "default_pool",
+                               "pool_slots":  1,
+                               "priority_weight":  1,
+                               "queue":  "default",
+                               "queued_when":  "2025-11-26T14:17:23.699227+00:00",
+                               "rendered_fields":  {
+                                                       "op_args":  [
+
+                                                                   ],
+                                                       "op_kwargs":  {
+
+                                                                     },
+                                                       "templates_dict":  null
+                                                   },
+                               "rendered_map_index":  null,
+                               "sla_miss":  null,
+                               "start_date":  "2025-11-26T14:17:27.959553+00:00",
+                               "state":  "success",
+                               "task_display_name":  "generate_and_send_report",
+                               "task_id":  "generate_and_send_report",
+                               "trigger":  null,
+                               "triggerer_job":  null,
+                               "try_number":  1,
+                               "unixname":  "airflow"
+                           },
+                           {
+                               "dag_id":  "data_ingestion_with_validation",
+                               "dag_run_id":  "manual__2025-11-26T14:17:12.739583",
+                               "duration":  0.667388,
+                               "end_date":  "2025-11-26T14:17:28.628917+00:00",
+                               "execution_date":  "2025-11-26T14:17:13.128795+00:00",
+                               "executor_config":  "{}",
+                               "hostname":  "614674a3a0f0",
+                               "map_index":  -1,
+                               "max_tries":  1,
+                               "note":  null,
+                               "operator":  "PythonOperator",
+                               "pid":  280,
+                               "pool":  "default_pool",
+                               "pool_slots":  1,
+                               "priority_weight":  1,
+                               "queue":  "default",
+                               "queued_when":  "2025-11-26T14:17:23.699227+00:00",
+                               "rendered_fields":  {
+                                                       "op_args":  [
+
+                                                                   ],
+                                                       "op_kwargs":  {
+
+                                                                     },
+                                                       "templates_dict":  null
+                                                   },
+                               "rendered_map_index":  null,
+                               "sla_miss":  null,
+                               "start_date":  "2025-11-26T14:17:27.961529+00:00",
+                               "state":  "success",
+                               "task_display_name":  "split_and_save_data",
+                               "task_id":  "split_and_save_data",
+                               "trigger":  null,
+                               "triggerer_job":  null,
+                               "try_number":  1,
+                               "unixname":  "airflow"
+                           },
+                           {
+                               "dag_id":  "data_ingestion_with_validation",
+                               "dag_run_id":  "manual__2025-11-26T14:17:12.739583",
+                               "duration":  0.632706,
+                               "end_date":  "2025-11-26T14:17:28.626856+00:00",
+                               "execution_date":  "2025-11-26T14:17:13.128795+00:00",
+                               "executor_config":  "{}",
+                               "hostname":  "614674a3a0f0",
+                               "map_index":  -1,
+                               "max_tries":  1,
+                               "note":  null,
+                               "operator":  "PythonOperator",
+                               "pid":  281,
+                               "pool":  "default_pool",
+                               "pool_slots":  1,
+                               "priority_weight":  1,
+                               "queue":  "default",
+                               "queued_when":  "2025-11-26T14:17:23.699227+00:00",
+                               "rendered_fields":  {
+                                                       "op_args":  [
+
+                                                                   ],
+                                                       "op_kwargs":  {
+
+                                                                     },
+                                                       "templates_dict":  null
+                                                   },
+                               "rendered_map_index":  null,
+                               "sla_miss":  null,
+                               "start_date":  "2025-11-26T14:17:27.994150+00:00",
+                               "state":  "success",
+                               "task_display_name":  "save_statistics",
+                               "task_id":  "save_statistics",
+                               "trigger":  null,
+                               "triggerer_job":  null,
+                               "try_number":  1,
+                               "unixname":  "airflow"
+                           }
+                       ],
+    "total_entries":  5
+}

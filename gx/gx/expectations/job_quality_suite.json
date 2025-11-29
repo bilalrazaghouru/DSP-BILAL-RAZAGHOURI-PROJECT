@@ -1,0 +1,9 @@
+{
+  "expectations": [],
+  "id": "af0f05fd-b936-42fb-acc9-f8d4631a6854",
+  "meta": {
+    "great_expectations_version": "1.9.0"
+  },
+  "name": "job_quality_suite",
+  "notes": null
+}

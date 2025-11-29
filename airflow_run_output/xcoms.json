@@ -1,0 +1,13 @@
+﻿{
+    "total_entries":  1,
+    "xcom_entries":  [
+                         {
+                             "dag_id":  "data_ingestion_with_validation",
+                             "execution_date":  "2025-11-26T14:17:13.128795+00:00",
+                             "key":  "skip_dag",
+                             "map_index":  -1,
+                             "task_id":  "read_data",
+                             "timestamp":  "2025-11-26T14:17:17.884539+00:00"
+                         }
+                     ]
+}

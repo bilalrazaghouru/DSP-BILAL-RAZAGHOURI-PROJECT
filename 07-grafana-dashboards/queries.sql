@@ -1,9 +1,7 @@
 ﻿-- Grafana Dashboard SQL Queries
 -- Developed by: [Member 4 Name]
 
--- ==============================================
 -- DASHBOARD 1: Job Recommendations Monitoring
--- ==============================================
 
 -- Panel 1: Total Predictions (Stat)
 SELECT COUNT(*) as value FROM predictions;

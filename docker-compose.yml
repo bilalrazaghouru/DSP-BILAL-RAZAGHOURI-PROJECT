@@ -1,0 +1,91 @@
+version: "3.8"
+
+services:
+  # =========================
+  # PostgreSQL (Airflow metadata DB)
+  # =========================
+  postgres-airflow:
+    image: postgres:13
+    container_name: postgres-airflow
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-airflow-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    restart: always
+
+  # =========================
+  # Airflow (Webserver + Scheduler)
+  # =========================
+  airflow:
+    image: apache/airflow:2.7.3
+    container_name: airflow
+    depends_on:
+      postgres-airflow:
+        condition: service_healthy
+
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "false"
+
+      DATABASE_URL: postgresql://job_user:JobUser%40123@host.docker.internal:5432/job_recommendation
+      API_URL: http://host.docker.internal:8000
+
+      TEAMS_WEBHOOK_URL: "https://epitafr.webhook.office.com/webhookb2/f5d0f70a-a407-4c29-9f5b-6cfa770ba434@3534b3d7-316c-4bc9-9ede-605c860f49d2/IncomingWebhook/4655948ff57742b9aeab082c811da0ea/b352da5f-9c6b-4120-8bfc-be25f0856de9/V2zO5E2vyiwWyqKkxrULWuyPcXQC5Fh_eUJ5EeIJTQUaI1"
+
+      _PIP_ADDITIONAL_REQUIREMENTS: >
+        pandas
+        sqlalchemy<2.0
+        psycopg2-binary
+        requests
+
+    volumes:
+      - ./05-airflow-dags:/opt/airflow/dags
+      - ./data:/opt/airflow/data
+      - ./reports:/opt/airflow/reports
+      - ./01-database-setup:/opt/airflow/01-database-setup
+      - ./06-data-validation:/opt/airflow/06-data-validation
+
+    ports:
+      - "8080:8080"
+
+    command: standalone
+    restart: always
+
+  # =========================
+  # Grafana (optional)
+  # =========================
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    restart: always
+    
+  reports-nginx:
+    image: nginx:alpine
+    container_name: airflow-reports-nginx
+    ports:
+      - "8081:80"
+    volumes:
+      - ./reports:/usr/share/nginx/html/reports:ro
+    restart: always
+
+volumes:
+  postgres-airflow-data:
+  grafana-data:
+

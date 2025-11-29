@@ -91,7 +91,7 @@ cd 01-database-setup
 python schema.py
 
 # Train model (Member 1)
-cd ../02-ml-model
+cd ../02-ml-model/models
 python train_model.py
 
 # Start API (Terminal 1)
@@ -101,8 +101,8 @@ python main.py
 
 # Start Web App (Terminal 2)
 cd ../04-streamlit-webapp
-pip install -r requirements.txt
-streamlit run app.py
+python -m pip install -r requirements.txt
+python -m streamlit run app.py
 
 # Start Airflow (Terminal 3)
 cd ../05-airflow-dags
@@ -116,6 +116,38 @@ docker compose up -d
 | FastAPI | http://localhost:8000/docs | None |
 | Airflow | http://localhost:8080 | admin/admin |
 | Grafana | http://localhost:3000 | admin/admin |
+
+### One-line helper
+You can start everything locally (Windows CMD) with the repository helper:
+
+```cmd
+run_all.bat
+```
+Or PowerShell:
+```powershell
+.\run_all.ps1
+```
+
+## Preflight Steps (recommended)
+Before starting everything, run these quick checks and sync tasks:
+
+1. Verify environment:
+```cmd
+python tools\verify_setup.py
+```
+2. Sync any sample raw-data files into Airflow's `data/raw-data` folder:
+```cmd
+python scripts\sync_raw_data.py
+```
+3. Train the ML model (if not yet trained):
+```cmd
+cd 02-ml-model\models
+python train_model.py
+```
+4. Initialize DB (optional if you want to use local DB rather than Dockerized):
+```cmd
+python 01-database-setup\schema.py
+```
 
 ## 📁 Project Structure
 
