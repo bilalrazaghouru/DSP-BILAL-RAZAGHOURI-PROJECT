@@ -21,9 +21,9 @@ Production-ready ML system that recommends jobs to candidates with automated dat
 **Folders:** \`01-database-setup/\`, \`02-ml-model/\`, \`03-api-service/\`
 - PostgreSQL database design & setup
 
-  ### Member 2:Vinod 
+  ### Member 2:Vinod Mallela
 - ML model training (Random Forest, 97% accuracy)
-- 
+  
 ### Member 3: Fahad Rehman
 - FastAPI service with 2 endpoints
 - 100,000+ predictions processed
